@@ -57,8 +57,13 @@ router.put("/:id/follow", async (req, res) => {
       const user = await User.findById(req.params.id)
       const currentUser = await User.findById(req.body.userId)
       if(!user.followers.includes(req.body.userId)) {
+<<<<<<< HEAD
         await user.updateOne({$push: {followers:req.body.userId} })
         await currentUser.updateOne({$push: {followings:req.params.id} })
+=======
+        await user.updateOne({ $push: { followers: req.body.userId } })
+        await currentUser.updateOne({ $push: { followings: req.params.id }})
+>>>>>>> b664e9b6a38efb0def036f03b2711beadc734221
         res.status(200).json("user has been followed")
       } else {
         res.status(403).json("you already follow this user")
@@ -78,8 +83,13 @@ router.put("/:id/unfollow", async (req, res) => {
       const user = await User.findById(req.params.id)
       const currentUser = await User.findById(req.body.userId)
       if(user.followers.includes(req.body.userId)) {
+<<<<<<< HEAD
         await user.updateOne({$pull: {followers:req.body.userId} })
         await currentUser.updateOne({$pull: {followings:req.params.id} })
+=======
+        await user.updateOne({ $pull: { followers: req.body.userId } })
+        await currentUser.updateOne({ $pull: { followings: req.params.id }})
+>>>>>>> b664e9b6a38efb0def036f03b2711beadc734221
         res.status(200).json("user has been unfollowed")
       } else {
         res.status(403).json("you don't follow this user")
