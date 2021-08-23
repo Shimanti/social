@@ -5,6 +5,7 @@ const helmet = require("helmet")
 const morgan = require("morgan")
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
+const postRoute = require("./routes/posts")
 const app = express()
 const PORT = 8800
 
@@ -26,6 +27,7 @@ app.use(morgan("common"))
 //routes
 app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
+app.use("/api/posts", postRoute)
 
 // run server
 app.listen(process.env.PORT || PORT, (req, res)=> {
